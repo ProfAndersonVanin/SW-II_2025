@@ -1,0 +1,40 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "teste_aula06",
+    "collectionId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+    "dateExported": "2025-04-12T13:17:35.086Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5d6ea8c5-28c3-4864-8d1b-0c4f2de4b3da",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "teste_GET",
+            "url": "http://localhost/aula06_swii/api.php",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2025-03-21T17:09:13.614Z",
+            "modified": "2025-04-12T12:44:02.615Z",
+            "headers": []
+        },
+        {
+            "_id": "30ec5d35-c00e-43b8-b4a4-db8ec5d9d3a9",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "teste_POST",
+            "url": "http://localhost/aula06_swii/api.php",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2025-03-21T17:16:01.698Z",
+            "modified": "2025-04-12T13:10:29.623Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 3,\n    \"nome\": \"Fulano Novo\",\n    \"email\": \"fulano@email.com\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "wRZiABLSEnX1EMjOckPXRE036ZorQyrhRDauAjqAlq8anty-FfG8Vocv0-q3orjJfZCr_YqeXV54SEpR66AKSg"
+}

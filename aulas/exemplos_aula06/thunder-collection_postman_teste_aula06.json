@@ -1,0 +1,53 @@
+{
+    "info": {
+        "_postman_id": "8206bb89-da75-4609-80d3-06bd458cbf34",
+        "name": "teste_aula06",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "teste_GET",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost/aula06_swii/api.php",
+                    "path": [
+                        "aula06_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "teste_POST",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost/aula06_swii/api.php",
+                    "path": [
+                        "aula06_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n    \"id\": 3,\n    \"nome\": \"Fulano Novo\",\n    \"email\": \"fulano@email.com\"\n}"
+                }
+            }
+        }
+    ]
+}
