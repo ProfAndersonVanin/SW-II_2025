@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="mb-4">Gerenciamento de Usuários</h1>
+
+    <!-- Seção de Cadastro -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Cadastrar Novo Usuário</h4>
+        </div>
+        <div class="card-body">
+            <form id="formCadastro" onsubmit="cadastrarUsuario(event)">
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="nome" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Seção de Busca e Atualização -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h4>Buscar/Atualizar Usuário</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <input type="number" class="form-control" id="buscaId" placeholder="Digite o ID">
+                <button class="btn btn-secondary mt-2" onclick="buscarUsuario()">Buscar</button>
+            </div>
+            <form id="formAtualizar" onsubmit="atualizarUsuario(event)" style="display:none;">
+                <div class="mb-3">
+                    <label class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="editNome" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="editEmail" required>
+                </div>
+                <button type="submit" class="btn btn-warning">Atualizar</button>
+                <button type="button" class="btn btn-danger" onclick="excluirUsuario()">Excluir</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Listagem de Usuários -->
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h4>Lista de Usuários</h4>
+        </div>
+        <div class="card-body">
+            <button class="btn btn-primary mb-3" onclick="carregarUsuarios()">Atualizar Lista</button>
+            <div id="listaUsuarios"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost/exemplos_aula10_swii/api.php';
+
+        // Carrega usuários ao carregar a página
+        window.onload = carregarUsuarios;
+
+        async function carregarUsuarios() {
+            try {
+                const response = await fetch(API_URL);
+                const usuarios = await response.json();
+                exibirUsuarios(usuarios);
+            } catch (error) {
+                mostrarErro('Erro ao carregar usuários');
+            }
+        }
+
+        function exibirUsuarios(usuarios) {
+            const lista = document.getElementById('listaUsuarios');
+            let html = '<table class="table table-striped"><thead><tr><th>ID</th><th>Nome</th><th>Email</th></tr></thead><tbody>';
+            
+            usuarios.forEach(usuario => {
+                html += `
+                    <tr>
+                        <td>${usuario.id}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.email}</td>
+                    </tr>
+                `;
+            });
+            
+            html += '</tbody></table>';
+            lista.innerHTML = html;
+        }
+
+        async function cadastrarUsuario(event) {
+            event.preventDefault();
+            const usuario = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(usuario)
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+                
+                alert('Usuário cadastrado com sucesso!');
+                document.getElementById('formCadastro').reset();
+                carregarUsuarios();
+            } catch (error) {
+                mostrarErro(error.message);
+            }
+        }
+
+        async function buscarUsuario() {
+            const id = document.getElementById('buscaId').value;
+            if (!id) return;
+
+            try {
+                const response = await fetch(`${API_URL}?id=${id}`);
+                if (!response.ok) throw new Error(await response.text());
+                
+                const usuario = await response.json();
+                document.getElementById('formAtualizar').style.display = 'block';
+                document.getElementById('editNome').value = usuario.nome;
+                document.getElementById('editEmail').value = usuario.email;
+            } catch (error) {
+                mostrarErro(error.message);
+            }
+        }
+
+        async function atualizarUsuario(event) {
+            event.preventDefault();
+            const id = document.getElementById('buscaId').value;
+            const usuario = {
+                nome: document.getElementById('editNome').value,
+                email: document.getElementById('editEmail').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}?id=${id}`, {
+                    method: 'PUT',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(usuario)
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+                
+                alert('Usuário atualizado com sucesso!');
+                carregarUsuarios();
+            } catch (error) {
+                mostrarErro(error.message);
+            }
+        }
+
+        async function excluirUsuario() {
+            const id = document.getElementById('buscaId').value;
+            if (!confirm(`Tem certeza que deseja excluir o usuário ${id}?`)) return;
+
+            try {
+                const response = await fetch(`${API_URL}?id=${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+                
+                alert('Usuário excluído com sucesso!');
+                document.getElementById('formAtualizar').style.display = 'none';
+                document.getElementById('buscaId').value = '';
+                carregarUsuarios();
+            } catch (error) {
+                mostrarErro(error.message);
+            }
+        }
+
+        function mostrarErro(mensagem) {
+            alert(`Erro: ${mensagem}`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "teste_aula10",
+    "collectionId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+    "dateExported": "2025-05-01T14:53:20.517Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5d6ea8c5-28c3-4864-8d1b-0c4f2de4b3da",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "Listar todos os usuários",
+            "url": "http://localhost/exemplos_aula10_swii/api.php/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2025-03-21T17:09:13.614Z",
+            "modified": "2025-05-01T14:36:38.999Z",
+            "headers": []
+        },
+        {
+            "_id": "f8e8b8b3-6572-4af3-98e6-68d09bc16835",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "Lista cliente por ID",
+            "url": "http://localhost/exemplos_aula10_swii/api.php/?id=1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-04-19T14:01:45.252Z",
+            "modified": "2025-05-01T14:49:27.350Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "55ca84de-6fdc-4b69-8a8a-23e85bd9f526",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "Insere novo usuário sem ID",
+            "url": "http://localhost/exemplos_aula10_swii/api.php",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2025-04-19T14:03:36.338Z",
+            "modified": "2025-05-01T14:37:09.720Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\": \"Outro um usuário\",\n  \"email\": \"outro@email.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d9b4e48d-8695-4bc4-8d5a-ed2248d8c3cd",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "Atualiza usuário pelo ID",
+            "url": "http://localhost/exemplos_aula10_swii/api.php/?id=1",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2025-05-01T14:47:11.523Z",
+            "modified": "2025-05-01T14:49:18.405Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nome\":\"Maria Souza SILVA\",\n  \"email\":\"maria@email.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "043165d6-5f58-45cb-8c59-71a5d173f63f",
+            "colId": "1eadf9fa-a316-4f77-a425-a2982e424c25",
+            "containerId": "",
+            "name": "Apaga usuário pelo Id",
+            "url": "http://localhost/exemplos_aula10_swii/api.php?id=5",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2025-05-01T14:50:44.985Z",
+            "modified": "2025-05-01T14:51:34.966Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "5",
+                    "isPath": false
+                }
+            ]
+        }
+    ],
+    "ref": "wRZiABLSEnX1EMjOckPXRE4LvttEsdo7qGqmJububjcm65MuONB_9l0XeRwqV-0SzG5Yh0dlZKjXiT2Df0T1cA"
+}

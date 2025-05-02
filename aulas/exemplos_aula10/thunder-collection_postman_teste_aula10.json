@@ -1,0 +1,134 @@
+{
+    "info": {
+        "_postman_id": "bcde602c-5cc9-4d64-bd1b-0b9605fc7d5a",
+        "name": "teste_aula10",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Listar todos os usuários",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost/exemplos_aula10_swii/api.php/",
+                    "path": [
+                        "exemplos_aula10_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Lista cliente por ID",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost/exemplos_aula10_swii/api.php/?id=1",
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "1"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "exemplos_aula10_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Insere novo usuário sem ID",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost/exemplos_aula10_swii/api.php",
+                    "path": [
+                        "exemplos_aula10_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"nome\": \"Outro um usuário\",\n  \"email\": \"outro@email.com\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Atualiza usuário pelo ID",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://localhost/exemplos_aula10_swii/api.php/?id=1",
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "1"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "exemplos_aula10_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"nome\":\"Maria Souza SILVA\",\n  \"email\":\"maria@email.com\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Apaga usuário pelo Id",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost/exemplos_aula10_swii/api.php?id=5",
+                    "query": [
+                        {
+                            "key": "id",
+                            "value": "5"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "exemplos_aula10_swii",
+                        "api.php"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                }
+            }
+        }
+    ]
+}
